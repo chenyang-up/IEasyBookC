@@ -30,11 +30,11 @@ struct AssetsAdminPage {
       // 顶部操作空间=========================================================================S
       Column({ space: 16 }) {
 
-        AddAssetButton({
-          handleSuccess: () => {
-            this.vm.assetProcessing.getAssetReport();
-          },
-        });
+        // AddAssetButton({
+        //   handleSuccess: () => {
+        //     this.vm.assetProcessing.getAssetReport();
+        //   },
+        // });
       }
       .padding({
         left: $r('app.string.space_l'),
