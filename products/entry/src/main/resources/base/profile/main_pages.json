@@ -1,6 +1,7 @@
 {
   "src": [
     "pages/Index",
-    "pages/assets/AssetsAdminPage"
+    "pages/assets/AssetsAdminPage",
+    "pages/assets/AssetTypeListPage"
   ]
 }

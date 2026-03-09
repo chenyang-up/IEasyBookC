@@ -7,3 +7,7 @@ export * from './src/main/ets/commons/Enums';
 export * from './src/main/ets/commons/Models';
 
 export { AssetTypeUtil } from './src/main/ets/utils/AssetTypeUtil';
+
+export { AssetTypeDBManager } from './src/main/ets/modelDBManager/AssetTypeDBManager';
+
+export { RdbStoreConfig } from 'commonlib/src/main/ets/DataBaseManager/RdbStoreConfig';

@@ -10,7 +10,11 @@
     },
     {
       "name": "system_color_background_auxiliary",
-      "value": "#f1f3f5"
+      "value": "#F4F4F4"
+    },
+    {
+      "name": "system_color_background_auxiliary_dev",
+      "value": "#ffffff"
     },
     {
       "name": "system_color_background_white",
