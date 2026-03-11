@@ -59,12 +59,12 @@ class AssetTypeUtil {
    * @author czx
    * @date 2026-03-02
    * */
-  public getAssetTypeByType(type: AssetType) {
+  public getAssetTypeByType(type: number) {
     let groupName: string = '';
-    if (type === AssetType.FUND) {
-      return groupName = '基金类资产';
-    } else if (type === AssetType.CREDIT) {
-      return groupName = '银行类资产';
+    if (type === AssetType.FUND.valueOf()) {
+      return groupName = '资金账户';
+    } else if (type === AssetType.CREDIT.valueOf()) {
+      return groupName = '信用账户';
     } else {
       return groupName = '其他资产';
     }

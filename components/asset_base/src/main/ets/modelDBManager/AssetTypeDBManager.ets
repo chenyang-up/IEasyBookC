@@ -39,12 +39,16 @@ export class AssetTypeDBManager {
       await rdbStore.executeSql(createTableSql);
       console.log('资产类型表创建成功');
 
-      // 查询资产类型表是否存在数据
+      // 查询资产类型表所有数据
       let typeList: AssetTypeDB[] = await this.queryAssetAllTypes();
-      if (typeList.length === 0) {
-        // 创建初始数据信息
-        const addList: Array<AssetTypeDBBase> = [];
-        AssetConstants.ASSET_TYPE_MAP.forEach((item) => {
+      console.log(`当前表中数据条数: ${typeList.length}`);
+
+      // 添加列表
+      const addList: Array<AssetTypeDBBase> = [];
+      const existingSubTypes = new Set(typeList.map(item => item.subType));
+      // 创建初始数据信息
+      AssetConstants.ASSET_TYPE_MAP.forEach((item) => {
+        if (!existingSubTypes.has(item.subType)) {
           const addInfo: AssetTypeDBBase = {
             name: item.name,
             type: item.type.valueOf(),
@@ -53,12 +57,16 @@ export class AssetTypeDBManager {
             isCustom: 0
           };
           addList.push(addInfo);
-        });
-        // 批量插入初始数据
-        this.batchAddAssetType(addList);
+        }
+      });
+      if (addList.length > 0) {
+        await this.batchAddAssetType(addList);
+        console.log(`新增了 ${addList.length} 条缺失的数据`);
+      } else {
+        console.log('所有数据都已存在，无需添加');
       }
     } catch (e) {
-      console.error('数据库初始化失败：', e);
+      console.error('资产类型表初始化失败：', e);
     }
   }
 

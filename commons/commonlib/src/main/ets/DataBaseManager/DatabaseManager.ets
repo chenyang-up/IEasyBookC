@@ -24,21 +24,31 @@ export class DatabaseManager {
       console.log('数据库已初始化');
       return;
     }
-
+    // 数据库配置信息
     const config: RdbStoreConfig = {
       name: DBConstants.DB_NAME,
       securityLevel: relationalStore.SecurityLevel[`S${DBConstants.SECURITY_LEVEL}`],
-      encrypt: false
+      createIfMissing: true,
+      encrypt: false,
+      readOnly: false
     };
 
-    try {
-      this.rdbStore = await relationalStore.getRdbStore(this.context, config);
-      this.isInitialized = true;
-      console.log('数据库连接成功');
-    } catch (error) {
-      console.error('数据库连接失败:', error);
-      throw new Error('数据库连接失败');
+    let retryCount: number = 0;
+    while (retryCount <= 3) {
+      try {
+        console.log(`[数据库] 第${retryCount+1}次尝试连接`);
+        this.rdbStore = await relationalStore.getRdbStore(this.context, config);
+        this.isInitialized = true;
+        console.log('数据库连接成功');
+        return;
+      } catch (error) {
+        retryCount++;
+        console.error(`[数据库] 第${retryCount}次失败：`, error.message);
+        // 每次重试延迟2秒（给模拟器服务足够启动时间）
+        await new Promise<void>(resolve => setTimeout(resolve, 2000));
+      }
     }
+    throw new Error("数据库连接失败：已重试3次");
   }
 
   /**
@@ -51,22 +61,21 @@ export class DatabaseManager {
     return this.rdbStore;
   }
 
-  // /**
-  //  * 执行事务
-  //  */
-  // public async transaction<T>(action: () => Promise<T>): Promise<T> {
-  //   const rdbStore = this.getRdbStore();
-  //
-  //   try {
-  //     await rdbStore.beginTransaction();
-  //     const result = await action();
-  //     await rdbStore.commit();
-  //     return result;
-  //   } catch (error) {
-  //     await rdbStore.rollback();
-  //     throw new Error('数据库事务执行失败');
-  //   }
-  // }
+  /**
+   * 执行事务
+   */
+  public async transaction<T>(action: () => Promise<T>): Promise<T> {
+    const rdbStore = this.getRdbStore();
+    try {
+      await rdbStore.beginTransaction();
+      const result = await action();
+      await rdbStore.commit();
+      return result;
+    } catch (error) {
+      await rdbStore.rollBack();
+      throw new Error('数据库事务执行失败');
+    }
+  }
 
   /**
    * 检查是否已连接

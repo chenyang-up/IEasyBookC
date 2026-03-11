@@ -1,7 +1,6 @@
 import { AbilityConstant, ConfigurationConstant, UIAbility, Want } from '@kit.AbilityKit';
 import { hilog } from '@kit.PerformanceAnalysisKit';
 import { window } from '@kit.ArkUI';
-import router from '@ohos.router';
 import { ServiceContainer } from '../initializer/ServiceContainer'
 
 const DOMAIN = 0x0000;
@@ -13,9 +12,6 @@ export default class EntryAbility extends UIAbility {
     try {
       // 初始化服务容器（关键）
       this.serviceContainer.initialize(this.context);
-
-      // 初始化资产类型数据
-      this.initializeAssetTypes();
 
       this.context.getApplicationContext().setColorMode(ConfigurationConstant.ColorMode.COLOR_MODE_NOT_SET);
     } catch (err) {
@@ -55,12 +51,5 @@ export default class EntryAbility extends UIAbility {
   onBackground(): void {
     // Ability has back to background
     hilog.info(DOMAIN, 'testTag', '%{public}s', 'Ability onBackground');
-  }
-
-  private async initializeAssetTypes(): Promise<void> {
-    const assetTypeDB = this.serviceContainer.getAssetTypeDBManager();
-    // 检查并初始化数据
-    await assetTypeDB.initDB();
-    console.log('初始资产类型数据添加完成');
   }
 }
