@@ -1,0 +1,12 @@
+{
+  "routerMap": [
+    {
+      "name": "AssetTypeListPage",
+      "pageSourceFile": "src/main/ets/pages/assets/AssetTypeListPage.ets",
+      "buildFunction": "AssetTypeListPageBuilder",
+      "data": {
+        "description": ""
+      }
+    }
+  ]
+}

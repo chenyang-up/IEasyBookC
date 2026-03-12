@@ -21,6 +21,18 @@
       "value": "16vp"
     },
     {
+      "name": "space_card_content",
+      "value": "6vp"
+    },
+    {
+      "name": "space_header",
+      "value": "12vp"
+    },
+    {
+      "name": "space_b",
+      "value": "8vp"
+    },
+    {
       "name": "space_xl",
       "value": "24vp"
     },

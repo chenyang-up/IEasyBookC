@@ -1,8 +1,13 @@
-import { CommonConstants, BackButton } from 'commonlib'
-import { AssetTypeUtil } from 'asset_base';
+import { CommonConstants, BackButton, ListGroupName } from 'commonlib'
+import { AssetDisplayTypeItem, AssetType, AssetTypeUtil, Constants } from 'asset_base';
 import { ServiceContainer } from '../../initializer/ServiceContainer';
 import { AssetTypeDB } from 'asset_base/src/main/ets/model/AssetTypeDB';
-import { curves } from '@kit.ArkUI';
+import { curves, router } from '@kit.ArkUI';
+
+@Builder
+export function AssetTypeListPageBuilder() {
+  AssetTypeListPage()
+}
 
 /**
  * 资产类型列表页面
@@ -10,15 +15,9 @@ import { curves } from '@kit.ArkUI';
  * @author czx
  * @date 2026-03-02
  * */
-@Builder
-export function AssetTypeListPageBuilder() {
-  AssetTypeListPage()
-}
-
 @Entry
 @Component
 struct AssetTypeListPage {
-  private navStack: NavPathStack = new NavPathStack();
   @State allAssetTypeList: AssetTypeDB[] = [];
   private serviceContainer = ServiceContainer.getInstance();
   // 分组后的数据
@@ -125,77 +124,19 @@ struct AssetTypeListPage {
   build() {
     NavDestination() {
       Column() {
-        // 顶部操作空间=========================================================================================S
-        Column() {
-          // Stack包裹返回按钮和标题，按钮重叠显示，而非横向排列，标题不再受按钮空间影响
-          Stack() {
-            Text('选择类型')
-              .fontColor(CommonConstants.FONT_COLOR_LEVEL1)
-              .fontWeight(FontWeight.Medium)
-              .textAlign(TextAlign.Center)
-              .width('100%');
-
-            // 返回按钮
-            BackButton()
-            // 按钮绝对定位在左侧，不占用标题的居中空间，仅视觉上叠加在标题左侧
-              .position({ left: 0, top: 0, bottom: 0 })
-              .onClick(() => {
-                this.navStack.pop()
-              });
-          }
-          .width('100%')
-        }
-        .padding({
-          left: $r('app.string.space_header'),
-          right: $r('app.string.space_header'),
-          top: $r('app.string.space_header'),
-          bottom: $r('app.string.space_header'),
-        })
-        // 顶部操作空间=========================================================================================E
-
-
-        // 资产列表区=======================================================================================S
-        Column() {
-          List({ space: 12 }) {
-            ForEach(this.letters, (letter: number) => {
-              ListItemGroup({
-                header: this.renderGroupHeader(letter),
-                style: ListItemGroupStyle.CARD   // 设置为卡片样式
-              }) {
-                if (this.expandMap.get(letter) ?? true) {
-                  // 循环渲染该分组下的列表项
-                  ForEach(this.groupedTypes.get(letter) || [], (item: AssetTypeDB) => {
-                    ListItem() {
-                      this.renderAssetItem(item)
-                    }
-                  }, (item: AssetTypeDB) => item.id.toString())
-                }
-              }
-              .borderRadius(12)
-              .divider({ strokeWidth: 1, color: '#f0f0f0' })
-              .backgroundColor($r('app.color.system_color_background_white'))
-            }, (letter: string) => letter)
-          }
+        Text('测试页面')
+          .fontSize(30)
+          .backgroundColor(Color.Red)
           .width('100%')
           .height('100%')
-        }
-        .padding({
-          left: $r('app.string.space_card_content'),
-          right: $r('app.string.space_card_content'),
-        })
-        .backgroundColor($r('app.color.system_color_background_auxiliary'))
-        .justifyContent(FlexAlign.Start)
-        // 资产列表区=======================================================================================E
+          .textAlign(TextAlign.Center)
       }
-      .height($r('app.string.height_percent_full'))
-      .width($r('app.string.width_percent_full'))
-      .backgroundColor($r('app.color.system_color_background_auxiliary'))
-      .expandSafeArea([SafeAreaType.SYSTEM], [SafeAreaEdge.TOP, SafeAreaEdge.BOTTOM]);
+      .width('100%')
+      .height('100%')
+      .backgroundColor(Color.Red)
     }
+    .width('100%')
+    .height('100%')
     .hideTitleBar(true)
-    .onReady((context: NavDestinationContext) => {
-      // 获取 navStack 供返回使用
-      this.navStack = context.pathStack;
-    })
   }
 }
