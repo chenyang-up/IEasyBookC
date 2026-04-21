@@ -2,7 +2,6 @@ import relationalStore from '@ohos.data.relationalStore';
 
 @ObservedV2
 class CommonUtil {
-
   public getBooleanFromCursor(cursor: relationalStore.ResultSet, columnName: string): boolean {
     try {
       const columnIndex = cursor.getColumnIndex(columnName);
@@ -16,6 +15,18 @@ class CommonUtil {
       console.error(`转换失败`);
       return false;
     }
+  }
+
+  public extractColumnValues<T>(cursor: relationalStore.ResultSet, columnName: string, extractor: (cursor: relationalStore.ResultSet, idx: number) => T): T[] {
+    const result: T[] = [];
+    const index = cursor.getColumnIndex(columnName);
+    if (index === -1) {
+      return result;
+    }
+    while (cursor.goToNextRow()) {
+      result.push(extractor(cursor, index));
+    }
+    return result;
   }
 }
 

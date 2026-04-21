@@ -117,7 +117,13 @@ struct AssetTypeListPage {
       }
       .width('100%')
       .animation({ curve: curves.interpolatingSpring(0, 1, 528, 39) })
-      .onClick(() => console.log('选中：', item.name + item.id))
+      .onClick(() => {
+        // 跳转到添加资产账户页面
+        this.navStack.pushPath({
+          name: 'AddAssetAccount',
+          param: item.id
+        });
+      })
     }
     .width("100%")
   }
@@ -183,6 +189,7 @@ struct AssetTypeListPage {
           left: $r('app.string.space_card_content'),
           right: $r('app.string.space_card_content'),
         })
+        .margin({bottom: 70})
         .backgroundColor($r('app.color.system_color_background_auxiliary'))
         .justifyContent(FlexAlign.Start)
         // 资产列表区=======================================================================================E
@@ -196,6 +203,7 @@ struct AssetTypeListPage {
     .onReady((context: NavDestinationContext) => {
       // 获取 navStack 供返回使用
       this.navStack = context.pathStack;
+
     })
   }
 }

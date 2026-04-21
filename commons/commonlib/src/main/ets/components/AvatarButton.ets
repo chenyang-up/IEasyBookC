@@ -10,5 +10,7 @@ export struct AvatarButton {
         .borderRadius(20) // 圆形头像
         .objectFit(ImageFit.Cover);
     }
+    .borderRadius(20)
+    .shadow({ radius: 8, color: '#40000000', offsetX: 2, offsetY: 2 })
   }
 }

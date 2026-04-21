@@ -37,3 +37,19 @@ export interface AssetTypeItem {
 export interface AssetDisplayTypeItem extends AssetTypeItem {
   icon: ResourceStr;
 }
+
+/**
+ * 币种类型
+ * */
+export interface AssetCurrency {
+  // 币种代码
+  code: string;
+  // 币种名称
+  name: string;
+  // 币种图标
+  icon: string;
+  // 币种备注
+  note: string;
+  // 汇率
+  rate: number;
+}

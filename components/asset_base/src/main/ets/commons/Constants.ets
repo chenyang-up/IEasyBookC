@@ -1,5 +1,5 @@
 import { AssetCategory, AssetType } from './Enums';
-import { AssetDisplayTypeItem } from './Types';
+import { AssetCurrency, AssetDisplayTypeItem } from './Types';
 
 export class AssetConstants {
   public static readonly FONT_SIZE_12 = '12fp';
@@ -104,4 +104,28 @@ export class AssetConstants {
       icon: 'app.media.ic_liability_5',
     },
   ];
+  public static readonly ASSET_CURRENCY_TYPE_LIST: AssetCurrency[] = [
+    {
+      code: 'CNY',
+      name: '人民币',
+      icon: '',
+      note: 'CNY(¥)',
+      rate: 1
+    },
+    {
+      code: 'USD',
+      name: '美元',
+      icon: '',
+      note: 'USD($)',
+      rate: 1
+    },
+    {
+      code: 'JPY',
+      name: '小鬼子币',
+      icon: '',
+      note: 'JPY(J¥)',
+      rate: 1
+    }
+  ]
 }
+

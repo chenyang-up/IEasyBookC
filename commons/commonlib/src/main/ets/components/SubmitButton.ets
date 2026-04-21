@@ -1,9 +1,8 @@
 @ComponentV2
-export struct BackButton {
+export struct SubmitButton {
   build() {
     Column() {
-      // 最左侧添加资产按钮
-      Image($r('app.media.czx_ic_back_left'))
+      Image($r('app.media.czx_ic_submit_button'))
         .width(40)
         .height(40)
     }

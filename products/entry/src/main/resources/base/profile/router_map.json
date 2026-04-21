@@ -7,6 +7,14 @@
       "data": {
         "description": ""
       }
+    },
+    {
+      "name": "AddAssetAccount",
+      "pageSourceFile": "src/main/ets/pages/assets/AddAssetAccount.ets",
+      "buildFunction": "AddAssetAccountBuilder",
+      "data": {
+        "description": ""
+      }
     }
   ]
 }

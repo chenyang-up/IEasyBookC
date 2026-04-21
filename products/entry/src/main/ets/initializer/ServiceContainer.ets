@@ -1,4 +1,4 @@
-import { AssetTypeDBManager, RdbStoreConfig } from 'asset_base'
+import { AssetTypeDBManager, RdbStoreConfig , AssetAccountDBManager} from 'asset_base'
 import { DBConstants , DatabaseManager} from 'commonlib'
 
 import relationalStore from '@ohos.data.relationalStore';
@@ -17,6 +17,8 @@ export class ServiceContainer {
   private dbManager: DatabaseManager | null = null;
   // 资产类型数据库管理
   private assetTypeDBManager: AssetTypeDBManager | null = null;
+  // 账户数据库管理
+  private assetAccountDBManager: AssetAccountDBManager | null = null;
 
   private constructor() {}
 
@@ -45,6 +47,11 @@ export class ServiceContainer {
       this.assetTypeDBManager = new AssetTypeDBManager(this.dbManager);
       // 资产类型管理数据初始化
       await this.assetTypeDBManager.initDB();
+
+      // 资产类型管理
+      this.assetAccountDBManager = new AssetAccountDBManager(this.dbManager);
+      // 资产类型管理数据初始化
+      await this.assetAccountDBManager.initDB();
       // 初始化其他服务===================================================================E
 
       console.log('数据库初始化流程完成');
@@ -65,4 +72,13 @@ export class ServiceContainer {
     return this.assetTypeDBManager;
   }
 
+  /**
+   * 获取账户服务的接口
+   * */
+  public getAssetAccountDBManager(): AssetAccountDBManager {
+    if (!this.assetAccountDBManager) {
+      throw new Error('AssetAccountDBManager 未初始化，请先调用 initialize');
+    }
+    return this.assetAccountDBManager;
+  }
 }

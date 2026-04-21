@@ -1,6 +1,4 @@
-import { CommonHeader , AvatarButton} from 'commonlib';
-import { AddAssetButton , OtherButton} from 'asset_manage';
-import router from '@ohos.router';
+import { CommonHeader , AvatarButton, AddButton , OtherButton} from 'commonlib';
 
 /**
  * 资产主页
@@ -9,7 +7,7 @@ import router from '@ohos.router';
  * @date 2026-03-01
  * */
 @Entry
-@Component
+@ComponentV2
 struct AssetsAdminPage {
   private navStack: NavPathStack = new NavPathStack();
 
@@ -20,7 +18,7 @@ struct AssetsAdminPage {
         Column({ space: 16 }) {
           Row() {
             // 添加资产按钮
-            AddAssetButton()
+            AddButton()
               .onClick(() => {
                 // 进入到资产类型列表页面
                 this.navigateToAssetTypeListPage();
