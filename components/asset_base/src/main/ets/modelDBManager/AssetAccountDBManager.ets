@@ -141,7 +141,7 @@ export class AssetAccountDBManager {
    * 查询所有资产账户 (之后添加查询条件，按账本去进行隔离)
    * @returns 资产账户列表
    */
-  async queryAssetAllTypes(): Promise<AssetAccountDB[]> {
+  async queryAssetAccountAll(): Promise<AssetAccountDB[]> {
     const rdbStore = this.getRdbStore();
     let cursor: relationalStore.ResultSet | null = null;
     try {
@@ -153,7 +153,7 @@ export class AssetAccountDBManager {
       // 执行查询
       cursor = await rdbStore.query(
         predicates,
-        ['id', 'assetId','name', 'remake', 'accountBalance', 'accountCurrency', 'includedTotalAssets', 'isOptional', 'billId'] // 查询字段
+        ['id', 'assetTypeId','name', 'remake', 'accountBalance', 'accountCurrency', 'includedTotalAssets', 'isOptional', 'billId', 'createTime'] // 查询字段
       );
 
       // 解析查询结果（Cursor转数组）
@@ -173,7 +173,7 @@ export class AssetAccountDBManager {
           billId: cursor.getLong(cursor.getColumnIndex('billId')),
           name: cursor.getString(cursor.getColumnIndex('name')),
           remake: cursor.getString(cursor.getColumnIndex('remake')),
-          accountBalance: cursor.getLong(cursor.getColumnIndex('accountBalance')),
+          accountBalance: cursor.getDouble(cursor.getColumnIndex('accountBalance')),
           accountCurrency: cursor.getString(cursor.getColumnIndex('accountCurrency')),
           includedTotalAssets: cursor.getLong(cursor.getColumnIndex('includedTotalAssets')),
           isOptional: cursor.getLong(cursor.getColumnIndex('isOptional')),

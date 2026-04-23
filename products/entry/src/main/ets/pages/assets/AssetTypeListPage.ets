@@ -203,7 +203,6 @@ struct AssetTypeListPage {
     .onReady((context: NavDestinationContext) => {
       // 获取 navStack 供返回使用
       this.navStack = context.pathStack;
-
     })
   }
 }

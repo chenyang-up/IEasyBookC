@@ -110,6 +110,17 @@ struct AddAssetAccount {
 
   }
 
+  // 返回到资产页面
+  private async navigateToAssetAdminPage() {
+    try {
+      this.navStack.popToName('AssetsAdminPage', true);
+      console.info('成功返回到到 AssetAdminPage');
+    } catch (err) {
+      console.error('返回到 AssetAdminPage 失败: ' + JSON.stringify(err));
+    }
+  }
+
+
   async aboutToAppear() {
     await this.loadData();
   }
@@ -148,8 +159,8 @@ struct AddAssetAccount {
               .onClick(async () => {
                 // 添加账户
                 this._createAssetAccountRecord(this.formData);
-                // 返回上一页
-                this.navStack.pop()
+                // 返回资产页面
+                this.navigateToAssetAdminPage();
               });
           }
           .width('100%')

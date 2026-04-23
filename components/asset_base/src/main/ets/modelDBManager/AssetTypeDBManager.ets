@@ -202,6 +202,61 @@ export class AssetTypeDBManager {
   }
 
   /**
+   * 查询所有资产类型
+   * @returns 资产类型列表
+   */
+  async queryAssetTypesByIds(ids: number[]): Promise<AssetTypeDB[]> {
+    const rdbStore = this.getRdbStore();
+    let cursor: relationalStore.ResultSet | null = null;
+    try {
+      // 指定表名
+      let predicates = new relationalStore.RdbPredicates(DB_CONSTANTS.TABLE_NAME);
+      predicates.in('id', ids);
+      // 排序规则
+      predicates.orderByDesc('createTime');
+
+      // 执行查询
+      cursor = await rdbStore.query(
+        predicates,
+        ['id', 'name', 'type', 'subType', 'icon', 'isCustom', 'createTime'] // 查询字段
+      );
+
+      // 解析查询结果（Cursor转数组）
+      const result: AssetTypeDB[] = [];
+
+      // 先判断是否有数据，避免空指针
+      if (cursor.rowCount === 0) {
+        console.log('暂无资产类型数据');
+        return result;
+      }
+
+      // 遍历游标，转换数据
+      while (cursor.goToNextRow()) {
+        result.push({
+          id: cursor.getLong(cursor.getColumnIndex('id')),
+          name: cursor.getString(cursor.getColumnIndex('name')),
+          type: cursor.getLong(cursor.getColumnIndex('type')),
+          subType: cursor.getLong(cursor.getColumnIndex('subType')),
+          icon: cursor.getString(cursor.getColumnIndex('icon')),
+          isCustom: cursor.getLong(cursor.getColumnIndex('isCustom')),
+          createTime: cursor.getString(cursor.getColumnIndex('createTime'))
+        });
+      }
+      cursor.close(); // 关闭游标（避免内存泄漏）
+      console.log('查询到', result.length, '条资产类型数据');
+      return result;
+    } catch (e) {
+      throw new Error(`查询资产类型失败: ${e}`);
+    } finally {
+      // 无论是否报错，都关闭游标（避免内存泄漏）
+      if (cursor) {
+        cursor.close();
+      }
+    }
+  }
+
+
+  /**
    * 批量新增资产类型
    * */
   async batchAddAssetType(itemList: AssetTypeDBBase[]) {

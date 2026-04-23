@@ -3,7 +3,7 @@
 export class AssetAccountRecordItemReap {
   @Trace id: number = 0;
   // 资产类型 Id
-  @Trace assetId: number = 0;
+  @Trace assetTypeId: number = 0;
   // 账本类型 Id
   @Trace billId: number = 1;
   // 账户名称
@@ -26,4 +26,6 @@ export class AssetAccountRecordItemReap {
   @Trace assetTypeName: string = '';
   // 资产类型图标
   @Trace assetTypeIcon: string = '';
+  // 资产大类（如Fund）
+  @Trace type: number = 1;
 }
