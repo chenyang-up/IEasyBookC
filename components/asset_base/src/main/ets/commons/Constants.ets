@@ -1,5 +1,5 @@
 import { AssetCategory, AssetType } from './Enums';
-import { AssetDisplayTypeItem } from './Types';
+import { AssetCurrency, AssetDisplayTypeItem } from './Types';
 
 export class AssetConstants {
   public static readonly FONT_SIZE_12 = '12fp';
@@ -24,84 +24,108 @@ export class AssetConstants {
       type: AssetType.FUND,
       subType: 101,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_1'),
+      icon: 'app.media.ic_asset_1',
     },
     {
       name: '银行卡',
       type: AssetType.FUND,
       subType: 102,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_2'),
+      icon: 'app.media.ic_asset_2',
     },
     {
       name: '华为钱包',
       type: AssetType.FUND,
       subType: 103,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_3'),
+      icon: 'app.media.ic_asset_3',
     },
     {
       name: '支付宝',
       type: AssetType.FUND,
       subType: 104,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_4'),
+      icon: 'app.media.ic_asset_4',
     },
     {
       name: '微信',
       type: AssetType.FUND,
       subType: 105,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_5'),
+      icon: 'app.media.ic_asset_5',
     },
     {
       name: '云闪付',
       type: AssetType.FUND,
       subType: 106,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_6'),
+      icon: 'app.media.ic_asset_6',
     },
     {
       name: '数字人民币',
       type: AssetType.FUND,
       subType: 107,
       category: AssetCategory.ASSET,
-      icon: $r('app.media.ic_asset_7'),
+      icon: 'app.media.ic_asset_7',
     },
     {
       name: '信用卡',
       type: AssetType.CREDIT,
       subType: 201,
       category: AssetCategory.LIABILITY,
-      icon: $r('app.media.ic_liability_1'),
+      icon: 'app.media.ic_liability_1',
     },
     {
       name: '花呗',
       type: AssetType.CREDIT,
       subType: 202,
       category: AssetCategory.LIABILITY,
-      icon: $r('app.media.ic_liability_2'),
+      icon: 'app.media.ic_liability_2',
     },
     {
       name: '美团月付',
       type: AssetType.CREDIT,
       subType: 203,
       category: AssetCategory.LIABILITY,
-      icon: $r('app.media.ic_liability_3'),
+      icon: 'app.media.ic_liability_3',
     },
     {
       name: '抖音月付',
       type: AssetType.CREDIT,
       subType: 204,
       category: AssetCategory.LIABILITY,
-      icon: $r('app.media.ic_liability_4'),
+      icon: 'app.media.ic_liability_4',
     },
     {
       name: '京东白条',
       type: AssetType.CREDIT,
       subType: 205,
       category: AssetCategory.LIABILITY,
-      icon: $r('app.media.ic_liability_5'),
+      icon: 'app.media.ic_liability_5',
     },
   ];
+  public static readonly ASSET_CURRENCY_TYPE_LIST: AssetCurrency[] = [
+    {
+      code: 'CNY',
+      name: '人民币',
+      icon: '',
+      note: 'CNY(¥)',
+      rate: 1
+    },
+    {
+      code: 'USD',
+      name: '美元',
+      icon: '',
+      note: 'USD($)',
+      rate: 1
+    },
+    {
+      code: 'JPY',
+      name: '小鬼子币',
+      icon: '',
+      note: 'JPY(J¥)',
+      rate: 1
+    }
+  ]
 }
+

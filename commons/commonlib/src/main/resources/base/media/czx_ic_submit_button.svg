@@ -1,0 +1,15 @@
+<svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40.000000" height="40.000000" fill="none" clip-path="url(#clipPath_0)" customFrame="url(#clipPath_0)">
+	<defs>
+		<clipPath id="clipPath_0">
+			<rect width="40.000000" height="40.000000" x="0.000000" y="0.000000" rx="20.000000" fill="rgb(255,255,255)" />
+		</clipPath>
+		<clipPath id="clipPath_1">
+			<rect width="30.000000" height="30.000000" x="5.000000" y="5.000000" fill="rgb(255,255,255)" />
+		</clipPath>
+	</defs>
+	<rect id="czx_ic_submit_button" width="40.000000" height="40.000000" x="0.000000" y="0.000000" rx="20.000000" fill="rgb(125,102,255)" />
+	<g id="对 1" clip-path="url(#clipPath_1)" customFrame="url(#clipPath_1)">
+		<rect id="对 1" width="30.000000" height="30.000000" x="5.000000" y="5.000000" />
+		<path id="矢量 1" d="M16.8463 25.0788L28.1338 11.25L30 12.8375L17.01 28.75L10 21.5938L11.7163 19.8413L16.8463 25.0788Z" fill="rgb(255,255,255)" fill-rule="nonzero" />
+	</g>
+</svg>

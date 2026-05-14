@@ -1,0 +1,28 @@
+{
+  "routerMap": [
+    {
+      "name": "AssetsAdminPage",
+      "pageSourceFile": "src/main/ets/pages/assets/AssetsAdminPage.ets",
+      "buildFunction": "AssetsAdminPageBuilder",
+      "data": {
+        "description": ""
+      }
+    },
+    {
+      "name": "AssetTypeListPage",
+      "pageSourceFile": "src/main/ets/pages/assets/AssetTypeListPage.ets",
+      "buildFunction": "AssetTypeListPageBuilder",
+      "data": {
+        "description": ""
+      }
+    },
+    {
+      "name": "AddAssetAccount",
+      "pageSourceFile": "src/main/ets/pages/assets/AddAssetAccount.ets",
+      "buildFunction": "AddAssetAccountBuilder",
+      "data": {
+        "description": ""
+      }
+    }
+  ]
+}

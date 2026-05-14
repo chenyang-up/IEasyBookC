@@ -54,6 +54,22 @@ class AssetTypeUtil {
     return item;
   }
 
+  /**
+   * 通过资产类型获取名称信息
+   * @author czx
+   * @date 2026-03-02
+   * */
+  public getAssetTypeByType(type: number) {
+    let groupName: string = '';
+    if (type === AssetType.FUND.valueOf()) {
+      return groupName = '资金账户';
+    } else if (type === AssetType.CREDIT.valueOf()) {
+      return groupName = '信用账户';
+    } else {
+      return groupName = '其他资产';
+    }
+  }
+
   private _createTypeList() {
     AssetConstants.ASSET_TYPE_MAP.forEach((item) => {
       const type = this._createTypeModel(

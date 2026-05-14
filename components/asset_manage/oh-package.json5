@@ -6,6 +6,7 @@
   "author": "",
   "license": "Apache-2.0",
   "dependencies": {
+    "commonlib": "file:../../commons/commonlib",
     "asset_base": "file:../../components/asset_base"
   }
 }

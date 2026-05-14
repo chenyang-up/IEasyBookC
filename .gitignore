@@ -1,0 +1,10 @@
+/target/
+/*/target/
+# IDEA
+/.idea/
+# hvigor
+/.hvigor/
+/oh_modules/
+/.preview/
+/build/
+.DS_Store

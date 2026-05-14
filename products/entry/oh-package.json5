@@ -7,7 +7,8 @@
   "license": "",
   "dependencies": {
     "commonlib": "file:../../commons/commonlib",
-    "asset_manage": "file:../../components/asset_manage"
+    "asset_manage": "file:../../components/asset_manage",
+    "asset_base": "file:../../components/asset_base"
   }
 }
 

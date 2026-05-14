@@ -1,6 +1,20 @@
 {
   "app": {
-    "signingConfigs": [],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/ccccc/.ohos/config/default_IEasyBookC_FCHXlSOtrnLfEBeViJ6wXtO3RLG8KsHlMwTTd0nLjms=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BF628EA6F3AC087BE1C420C21229133157023C23087C9B5C7F7BE14A846EA9AF168654663E0E883",
+          "profile": "/Users/ccccc/.ohos/config/default_IEasyBookC_FCHXlSOtrnLfEBeViJ6wXtO3RLG8KsHlMwTTd0nLjms=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/ccccc/.ohos/config/default_IEasyBookC_FCHXlSOtrnLfEBeViJ6wXtO3RLG8KsHlMwTTd0nLjms=.p12",
+          "storePassword": "0000001BCB09C1B928117231B9632B74815711D54980568C5457805AD9F4FDD63EC0BA61E677513A982A36"
+        }
+      }
+    ],
     "products": [
       {
         "name": "default",
